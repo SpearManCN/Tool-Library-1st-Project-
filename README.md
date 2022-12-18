@@ -18,7 +18,7 @@
 (자유,문의,QnA) 
 <img src="/picture/function5.jpg">
 5 - 관리자 페이지
-<img src=".picture/function6.jpg">
+<img src="/picture/function6.jpg">
 6 - 로그아웃
 
 7 - 마이페이지
