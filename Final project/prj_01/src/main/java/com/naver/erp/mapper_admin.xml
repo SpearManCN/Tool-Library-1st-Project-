@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.naver.erp.AdminDAO">
+
+
+	<select id="getReportBoard"  resultType="java.util.HashMap">
+
+		select 
+			reportno||''		as "reportNo"
+			,reason				as "reason"
+			,reportcontent		as "reportContent"
+			,reporterEmail		as "reporterEmail"
+			,writerEmail		as "writerEmail"
+			,partno||''			as "partNo"
+			,postno||''			as "postNo"
+		from 
+			report
+
+	
+
+	</select>
+	
+
+	
+	
+	
+	<select id="getReportListTotCnt"  parameterType="com.naver.erp.ReportDTO" resultType="int">
+
+		select 
+			count(*)
+		from 
+			report
+
+	</select>	
+	
+	
+	
+	
+	<select id="getTotMember"   resultType="int">
+
+		select 
+			count(*)
+		from 
+			memberboard
+
+	</select>
+	
+	
+	<select id="getTotJijum"   resultType="int">
+
+		select 
+			count(*)
+		from 
+			jijum
+
+	</select>
+	
+	
+	<select id="getTotTool"   resultType="int">
+
+		select 
+			count(*)
+		from 
+			tool
+
+	</select>
+	
+
+		
+	<select id="getTotOnRental"   resultType="int">
+
+		select 
+			count(*)
+		from 
+			onrental
+
+	</select>
+	
+
+	<select id="getTotOnBooking"   resultType="int">
+
+		select 
+			count(*)
+		from 
+			onbooking
+
+	</select>
+	
+</mapper>
+
+
+
+
+

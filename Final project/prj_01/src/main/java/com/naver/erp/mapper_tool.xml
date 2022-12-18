@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.naver.erp.ToolDAO">
+
+
+
+
+ <select id="getLocation"  resultType="java.util.HashMap">
+		select * from location
+ 
+</select>
+
+<select id="getJijum" resultType="java.util.HashMap">
+	select * from jijum
+
+</select>
+
+
+<select id="getBigSort" resultType="java.util.HashMap">
+	select * from bigSort
+
+</select>
+<select id="getSmallSort" resultType="java.util.HashMap">
+	select * from smallSort
+
+</select>
+
+
+	<!-- 	searchList.put("selJijumNo", selJijumNo);
+		searchList.put("selBigSort", selBigSort);
+		searchList.put("selKeyword", selKeyword);
+		searchList.put("selSmallSort", selSmallSort); -->
+		
+		
+		
+		<!--  
+<select id="getToolList" parameterType="hashmap" resultType="java.util.HashMap">
+	select * from tool 
+	where 1=1 
+	<if test="selJijumNo!=null and selJijumNo!=''" >
+		and jijumNo = #{selJijumNo}
+	</if>
+	<if test="selSmallSort!=null and selSmallSort!='' ">
+		and smallSortNo = #{selSmallSort}
+	</if>
+	<if test="selKeyword!=null and selKeyword!=''">
+		and	        (
+								upper(name) like upper('%${selKeyword}%')
+								or
+								upper(brand) like upper('%${selKeyword}%')
+							)
+	</if>
+
+</select>--> 
+<!--  
+,,,,,,,,,,,,,,,,,
+<select id="getToolList" parameterType="hashmap" resultType="java.util.HashMap">
+	select * from tool 
+	where 1=1 
+	<if test="selJijumNo!=null and selJijumNo!=''" >
+		and jijumNo = #{selJijumNo}
+	</if>
+	<if test="selSmallSort!=null and selSmallSort!='' ">
+		and smallSortNo = #{selSmallSort}
+	</if>
+	<if test="selKeyword!=null and selKeyword!=''">
+		and	        (
+								upper(name) like upper('%${selKeyword}%')
+								or
+								upper(brand) like upper('%${selKeyword}%')
+							)
+	</if>
+	<if test="keyword2!=null and keyword2.length()>0">
+							
+					</if>
+					</select>
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,	-->		
+
+
+<select id="getToolList" parameterType="hashmap" resultType="java.util.HashMap">
+		
+	select * from (select zxc.* , ROWNUM AS RNUM from(
+	select * from tool 
+	where 1=1 
+	<if test="selJijumNo!=null and selJijumNo!=''" >
+		and jijumNo = #{selJijumNo}
+	</if>
+	<if test="selSmallSort!=null and selSmallSort!='' ">
+		and smallSortNo = #{selSmallSort}
+	</if>
+	<if test="selKeyword!=null and selKeyword!=''">
+		and	        (
+								upper(name) like upper('%${selKeyword}%')
+								or
+								upper(brand) like upper('%${selKeyword}%')
+							)
+	</if>
+	<if test="selSortBtn==1">order by name asc</if>
+	<if test="selSortBtn==2">order by name desc</if>
+	
+	 
+	<![CDATA[
+	) zxc where ROWNUM <= #{endCnt}) where RNUM >= #{startCnt} 
+	]]>
+	
+	
+</select>
+
+
+<select id="getToolList2" parameterType="hashmap" resultType="java.util.HashMap">
+
+	select * from tool 
+	where 1=1 
+	<if test="selJijumNo!=null and selJijumNo!=''" >
+		and jijumNo = #{selJijumNo}
+	</if>
+	<if test="selSmallSort!=null and selSmallSort!='' ">
+		and smallSortNo = #{selSmallSort}
+	</if>
+	<if test="selKeyword!=null and selKeyword!=''">
+		and	        (
+								upper(name) like upper('%${selKeyword}%')
+								or
+								upper(brand) like upper('%${selKeyword}%')
+							)
+	</if>
+
+</select>
+
+
+
+
+
+
+
+
+
+
+<select id="getToolDetailFromTool" parameterType="int"	resultType="java.util.HashMap">
+	select * from tool where no=#{toolNo}
+
+</select>
+<select id="getToolDetailFromJijum" parameterType="int" resultType="java.util.HashMap">
+	select * from jijum where no=#{jijumNo}
+
+</select>
+
+<update id="upToolStatus" >
+	 	update 
+			tool
+		set
+			nowstatus = 1
+		 where no = #{toolNo}
+	</update>
+	
+
+	
+	
+	
+<insert id="insertToolRentBooktoOnBooking" parameterType="java.util.HashMap" >
+		insert  into onBooking
+		values(
+		(select nvl(max(no),0)+1 from onBooking)
+		,(select no from memberBoard where email=#{email})
+		,#{email}
+		,#{selectedDate}
+		,#{toolNo}
+		,#{jijumNo}
+		,#{toolName}
+		)
+		
+	</insert>
+  
+
+<select id="toolListTotCnt" parameterType="com.naver.erp.ToolDTO" resultType="int">
+select count(*) from tool
+where 1=1 
+	<if test="selJijumNo!=null and selJijumNo!=''" >
+		and jijumNo = #{selJijumNo}
+	</if>
+	<if test="selSmallSort!=null and selSmallSort!='' ">
+		and smallSortNo = #{selSmallSort}
+	</if>
+	<if test="selKeyword!=null and selKeyword!=''">
+		and	        (
+								upper(name) like upper('%${selKeyword}%')
+								or
+								upper(brand) like upper('%${selKeyword}%')
+							)
+	</if>
+</select>
+
+
+</mapper>
