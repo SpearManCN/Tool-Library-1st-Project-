@@ -1,7 +1,15 @@
 ## 첫번째 프로젝트
 ## Tool Library
 
-### 기간 22.11.21 ~ 22.12.28
+### 기간 22.11.21 ~ 22.12.16
+#### 인원6인, 역할 - 팀장
+#### 담당 파트
+1. 전체 DB 설계 및 구현 
+2. JSP(+SQL구문) 전체 틀 설계 및 약 60% 이상 구현
+3. 조원들 작업물 통합 및 과정의 코드개선, 오류해결 전담
+4. 테스팅 후의 거의 모든 디버깅 담당
+
+#### 개발 환경 - java / oracle / spring
 <img src="/picture/main1.jpg">
 <img src="/picture/main3.jpg">
 <img src="/picture/main2.jpg">
