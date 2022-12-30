@@ -9,6 +9,9 @@
 3. 조원들 작업물 통합 및 과정의 코드개선, 오류해결 전담
 4. 테스팅 후의 거의 모든 디버깅 담당
 
+### ERD
+<img src="/picture/ERD.jpg">
+
 #### 개발 환경 - java / oracle / spring
 <img src="/picture/main1.jpg">
 <img src="/picture/main3.jpg">
