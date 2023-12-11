@@ -1,4 +1,4 @@
-## 첫번째 프로젝트
+## 첫번째 프로젝트 (IT 학원 프로젝트)
 ## Tool Library
 
 ### 기간 22.11.21 ~ 22.12.16
@@ -12,7 +12,7 @@
 ### ERD
 <img src="/picture/ERD.jpg">
 
-#### 개발 환경 - java / oracle / spring
+#### 개발 환경 - java & spring / oracle & mybatis / jsp 
 <img src="/picture/main1.jpg">
 <img src="/picture/main3.jpg">
 <img src="/picture/main2.jpg">
